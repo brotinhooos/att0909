@@ -1,0 +1,46 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ projeto.titulo }}</title>
+</head>
+<body>
+
+    <h1>{{ projeto.titulo }}</h1>
+
+    <p>
+        <strong>Descrição:</strong>
+        {{ projeto.descricao }}
+    </p>
+
+    <p>
+        <strong>Categoria:</strong>
+        {{ projeto.categoria.nome }}
+    </p>
+
+    <p>
+        <strong>Data de início:</strong>
+        {{ projeto.data_inicio }}
+    </p>
+
+    <h2>Equipe do Projeto</h2>
+
+    <ul>
+        {% for aluno in projeto.equipe.all %}
+            <li>
+                {{ aluno.nome }}
+            </li>
+        {% empty %}
+            <li>Nenhum aluno cadastrado na equipe.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'listagem' %}">
+        Voltar para projetos
+    </a>
+
+</body>
+</html>
+

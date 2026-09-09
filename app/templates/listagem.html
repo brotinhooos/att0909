@@ -1,0 +1,36 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Projetos de Extensão</title>
+</head>
+<body>
+
+    <h1>Projetos de Extensão</h1>
+
+    {% for projeto in projetos %}
+
+        <h2>
+            <a href="{% url 'detalhes' projeto.id %}">
+                {{ projeto.titulo }}
+            </a>
+        </h2>
+
+        <p>
+            <strong>Categoria:</strong>
+            {{ projeto.categoria.nome }}
+        </p>
+
+        <hr>
+
+    {% empty %}
+
+        <p>Nenhum projeto cadastrado.</p>
+
+    {% endfor %}
+
+</body>
+</html>
+
