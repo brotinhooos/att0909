@@ -1,27 +1,9 @@
 
-from django.shortcuts import render, get_object_or_404
-from .models import Projeto
+from django.urls import path
+from . import views
 
 
-def lista_projetos(request):
-    projetos = Projeto.objects.all()
-
-    return render(
-        request,
-        'app/lista_projetos.html',
-        {
-            'projetos': projetos
-        }
-    )
-
-
-def detalhe_projeto(request, id):
-    projeto = get_object_or_404(Projeto, id=id)
-
-    return render(
-        request,
-        'app/detalhe_projeto.html',
-        {
-            'projeto': projeto
-        }
-    )
+urlpatterns = [
+    path('', views.lista_projetos, name='lista_projetos'),
+    path('projeto/<int:id>/', views.detalhe_projeto, name='detalhe_projeto'),
+]
